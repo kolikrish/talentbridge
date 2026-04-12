@@ -67,7 +67,7 @@ const PostJob = () => {
     if (dataCreateJob && dataCreateJob.length > 0) {
       navigate("/jobs");
     }
-  }, [dataCreateJob]);
+  }, [dataCreateJob, navigate]);
 
   const {
     loading: loadingCompanies,
@@ -91,56 +91,53 @@ const PostJob = () => {
   }
 
   return (
-    <div className="pb-16 max-w-4xl mx-auto px-4 sm:px-6">
-      <div className="text-center mb-10 mt-6">
-        <div className="mx-auto w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
-          <BriefcaseBusiness size={32} />
-        </div>
-        <h1 className="font-extrabold text-4xl sm:text-5xl text-slate-900 tracking-tight leading-tight mb-4">
-          Post a <span className="gradient-title">New Job</span>
+    <div className="pb-16 max-w-4xl mx-auto px-4 sm:px-6 font-['Gilroy']">
+      <div className="text-center mb-12 mt-10">
+        <h1 className="text-5xl md:text-6xl font-light text-slate-900 leading-none mb-6 tracking-tight">
+          Post a <span className="font-bold">New Position.</span>
         </h1>
-        <p className="text-slate-500 text-lg max-w-lg mx-auto">
-          Fill out the details below to publish a job listing and reach top talent.
+        <p className="text-slate-400 text-lg max-w-lg mx-auto font-normal leading-relaxed">
+          Fill out the details below to reach the world's top talent with our intelligent matching.
         </p>
       </div>
 
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden p-6 sm:p-10">
+      <div className="bg-white rounded-[2.5rem] border border-slate-50 shadow-[0_10px_40px_rgba(0,0,0,0.02)] overflow-hidden p-8 sm:p-12">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-10"
         >
           {/* Job Title */}
-          <div className="space-y-1.5">
-            <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
+          <div className="space-y-2.5">
+            <label className="text-sm font-bold text-slate-800 uppercase tracking-widest px-1">
                Job Title <span className="text-red-500">*</span>
             </label>
             <Input 
-              placeholder="e.g. Senior Frontend Engineer" 
-              className="h-12 bg-slate-50 text-base"
+              placeholder="e.g. Senior Product Designer" 
+              className="h-14 bg-slate-50 border-slate-100 rounded-2xl text-base px-6 focus:bg-white transition-all shadow-sm"
               {...register("title")} 
             />
-            {errors.title && <p className="text-red-500 text-xs font-semibold">{errors.title.message}</p>}
+            {errors.title && <p className="text-red-500 text-xs font-bold px-1">{errors.title.message}</p>}
           </div>
 
           {/* Job Description */}
-          <div className="space-y-1.5">
-            <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
+          <div className="space-y-2.5">
+            <label className="text-sm font-bold text-slate-800 uppercase tracking-widest px-1">
                Job Description <span className="text-red-500">*</span>
             </label>
             <Textarea 
-              placeholder="Describe the role, responsibilities, and impact..." 
-              className="min-h-[140px] bg-slate-50 text-base resize-y"
+              placeholder="Describe the role, responsibilities, and expected impact..." 
+              className="min-h-[160px] bg-slate-50 border-slate-100 rounded-2xl text-base p-6 focus:bg-white transition-all shadow-sm resize-none"
               {...register("description")} 
             />
             {errors.description && (
-              <p className="text-red-500 text-xs font-semibold">{errors.description.message}</p>
+              <p className="text-red-500 text-xs font-bold px-1">{errors.description.message}</p>
             )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Location */}
-            <div className="space-y-1.5">
-              <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
+            <div className="space-y-2.5">
+              <label className="text-sm font-bold text-slate-800 uppercase tracking-widest px-1">
                  Location <span className="text-red-500">*</span>
               </label>
               <Controller
@@ -148,13 +145,13 @@ const PostJob = () => {
                 control={control}
                 render={({ field }) => (
                   <Select value={field.value} onValueChange={field.onChange}>
-                    <SelectTrigger className="h-12 bg-slate-50">
-                      <SelectValue placeholder="Select a Location" />
+                    <SelectTrigger className="h-14 bg-slate-50 border-slate-100 rounded-2xl px-6 shadow-sm">
+                      <SelectValue placeholder="Select Location" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="rounded-2xl border-slate-100 shadow-2xl">
                       <SelectGroup>
                         {State.getStatesOfCountry("IN").map(({ name }) => (
-                          <SelectItem key={name} value={name}>
+                          <SelectItem key={name} value={name} className="rounded-xl">
                             {name}
                           </SelectItem>
                         ))}
@@ -164,34 +161,34 @@ const PostJob = () => {
                 )}
               />
               {errors.location && (
-                <p className="text-red-500 text-xs font-semibold">{errors.location.message}</p>
+                <p className="text-red-500 text-xs font-bold px-1">{errors.location.message}</p>
               )}
             </div>
 
             {/* Company */}
-            <div className="space-y-1.5">
-              <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
+            <div className="space-y-2.5">
+              <label className="text-sm font-bold text-slate-800 uppercase tracking-widest px-1">
                  Company <span className="text-red-500">*</span>
               </label>
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 <Controller
                   name="company_id"
                   control={control}
                   render={({ field }) => (
                     <div className="flex-1">
                       <Select value={field.value} onValueChange={field.onChange}>
-                        <SelectTrigger className="h-12 bg-slate-50">
-                          <SelectValue placeholder="Select Company">
+                        <SelectTrigger className="h-14 bg-slate-50 border-slate-100 rounded-2xl px-6 shadow-sm">
+                          <SelectValue placeholder="Company">
                             {field.value
                               ? companies?.find((com) => com.id === Number(field.value))
                                   ?.name
                               : "Select Company"}
                           </SelectValue>
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="rounded-2xl border-slate-100 shadow-2xl">
                           <SelectGroup>
                             {companies?.map(({ name, id }) => (
-                              <SelectItem key={name} value={id}>
+                              <SelectItem key={name} value={id} className="rounded-xl">
                                 {name}
                               </SelectItem>
                             ))}
@@ -201,21 +198,20 @@ const PostJob = () => {
                     </div>
                   )}
                 />
-                {/* Custom wrapper inside Drawer */}
                 <AddCompanyDrawer fetchCompanies={fnCompanies} />
               </div>
               {errors.company_id && (
-                <p className="text-red-500 text-xs font-semibold">{errors.company_id.message}</p>
+                <p className="text-red-500 text-xs font-bold px-1">{errors.company_id.message}</p>
               )}
             </div>
           </div>
 
           {/* Requirements */}
-          <div className="space-y-1.5">
-            <label className="text-sm font-bold text-slate-800 flex items-center gap-2">
-              <ListChecks size={16} className="text-slate-400" /> Requirements <span className="text-red-500">*</span>
+          <div className="space-y-2.5">
+            <label className="text-sm font-bold text-slate-800 uppercase tracking-widest px-1">
+               Requirements <span className="text-red-500">*</span>
             </label>
-            <div className="border border-slate-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent transition-all" data-color-mode="light">
+            <div className="border border-slate-100 rounded-[1.5rem] overflow-hidden bg-slate-50 shadow-sm" data-color-mode="light">
               <Controller
                 name="requirements"
                 control={control}
@@ -223,7 +219,7 @@ const PostJob = () => {
                   <MDEditor 
                     value={field.value} 
                     onChange={field.onChange} 
-                    className="!rounded-lg border-0 bg-transparent"
+                    className="!rounded-[1.5rem] border-0 bg-slate-50"
                     preview="edit"
                     height={300}
                   />
@@ -231,25 +227,25 @@ const PostJob = () => {
               />
             </div>
             {errors.requirements && (
-              <p className="text-red-500 text-xs font-semibold">{errors.requirements.message}</p>
+              <p className="text-red-500 text-xs font-bold px-1">{errors.requirements.message}</p>
             )}
           </div>
 
           {errorCreateJob?.message && (
-             <div className="p-4 bg-red-50 text-red-700 rounded-xl text-sm border border-red-200 font-semibold flex items-center justify-center">
+             <div className="p-4 bg-red-50 text-red-600 rounded-2xl text-xs border border-red-100 font-bold text-center">
                {errorCreateJob?.message}
              </div>
           )}
 
-          {loadingCreateJob && <BarLoader width={"100%"} color="#3b82f6" />}
+          {loadingCreateJob && <BarLoader width={"100%"} color="#0f172a" />}
           
           <Button 
             type="submit" 
             size="xl" 
-            className="w-full mt-4 font-bold h-14 text-lg shadow-lg shadow-blue-200 hover:-translate-y-0.5 transition-transform"
+            className="w-full mt-4 h-16 rounded-2xl bg-[#0f172a] hover:bg-[#1e293b] text-white font-bold text-lg shadow-xl shadow-slate-100 transition-all hover:-translate-y-1"
             disabled={loadingCreateJob}
           >
-            {loadingCreateJob ? "Publishing Job..." : "Publish Job"}
+            {loadingCreateJob ? "Publishing Position..." : "Publish Position"}
           </Button>
         </form>
       </div>
