@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/font/Gilroy-Light.ttf') format('truetype');
+}
+
 @theme {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -26,8 +31,8 @@
 
 @layer base {
   :root {
-    /* #F3F4F4 -> hsl(180, 2%, 95%) */
-    --background: 180 2% 95%;
+    /* Pure White Background */
+    --background: 0 0% 100%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;

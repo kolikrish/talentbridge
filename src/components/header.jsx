@@ -30,32 +30,17 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-5 flex justify-between items-center border-b border-[var(--border)] mb-8">
-        {/* Logo — updated with TalentBridge Branding */}
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2FA084] to-[#3ebd9c] flex items-center justify-center shadow-lg shadow-[#2FA084]/20 group-hover:shadow-[#2FA084]/40 transition-all duration-300">
-            <span className="text-white font-extrabold text-sm tracking-tight">TB</span>
-          </div>
-          <span className="font-extrabold text-2xl text-slate-900 tracking-tight group-hover:text-[#2FA084] transition-colors duration-200">
-            Talent<span className="text-[#2FA084]">Bridge</span>
-          </span>
-        </Link>
+      <nav className="py-6 flex justify-between items-center mb-8">
+        {/* Left side empty as per design image */}
+        <div />
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <SignedOut>
             <Button
-              variant="outline"
               onClick={() => setShowSignIn(true)}
-              className="font-semibold"
+              className="font-light bg-[#0f172a] hover:bg-[#1e293b] text-white rounded-full px-8 py-2.5 h-auto text-sm transition-all duration-300 shadow-xl shadow-slate-200"
             >
               Sign In
-            </Button>
-            <Button
-              variant="default"
-              onClick={() => setShowSignIn(true)}
-              className="font-semibold"
-            >
-              Get Started
             </Button>
           </SignedOut>
 
