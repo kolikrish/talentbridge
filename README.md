@@ -1,64 +1,65 @@
 # TalentBridge 🚀
 
-TalentBridge is a modern job portal application built with React, combining a seamless user experience with powerful job searching and posting capabilities. It allows users to browse job listings, save their favorite jobs, and easily apply, while also providing employers with a comprehensive flow to post and manage job openings. 
+TalentBridge is a premium, high-end job portal application designed with a minimalist aesthetic and a focus on visual excellence. Built with React and powered by Supabase, it offers a sophisticated platform for global talent and world-class companies to connect through intelligent matching and a seamless, performant user experience.
 
-## Features
+## ✨ Premium UI/UX
+- **High-End Aesthetic**: Pure white theme with a sophisticated dark palette and subtle elevation.
+- **Modern Typography**: Custom **Gilroy** font hierarchy (Bold & Light) for a professional, editorial feel.
+- **Glassmorphism & Motion**: Immersive animations using Framer Motion and sleek, rounded-edge components (`2.5rem` radius).
+- **Responsive Mastery**: Fully optimized for every device, from mobile to ultra-wide displays.
 
-- **User Authentication**: Secure sign-up and login utilizing [Clerk](https://clerk.com/).
-- **Job Discovery & Listing**: Browse available jobs, filter through categories, and explore job details.
-- **Candidate Onboarding**: Custom onboarding flow tailored for both recruiters and job seekers.
-- **Save & Apply**: Save favorite jobs and apply seamlessly.
-- **Post Jobs**: Dedicated portals for recruiters to post and manage jobs.
-- **Protected Routes**: Secure navigation ensuring privacy and controlled access.
-- **Modern UI/UX**: Designed using Tailwind CSS with immersive animations using Framer Motion.
+## 🚀 Features
+- **Intelligent Matching**: AI-driven job searching and candidate filtering.
+- **Secure Authentication**: Robust user management integrated with [Clerk](https://clerk.com/).
+- **Dual-Mode Onboarding**: Specialized onboarding flows for both **Recruiters** and **Candidates**.
+- **Job Lifecycle Management**: Post, manage, save, and apply for roles with real-time status tracking.
+- **Rich Interaction**: Real-time feedback and dynamic form handling for seamless recruitment.
 
-## Tech Stack
-
-- **Frontend**: React (v19) via Vite
-- **Routing**: React Router DOM (v7)
-- **Styling**: Tailwind CSS
-- **Authentication**: Clerk
-- **Backend/Database**: Supabase
-- **Forms & Validation**: React Hook Form, Zod
-- **Icons & Animations**: Lucide React, Framer Motion
-
-## Getting Started
+## 📦 Getting Started
 
 ### Prerequisites
+- Node.js (v20+)
+- Docker (optional, for containerized development)
 
-Ensure you have Node.js installed.
+### Local Development (Standard)
 
-### Installation
-
-1. Clone the repository:
+1. **Clone & Install**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/kolikrish/Talentbridge
    cd talentbridge
-   ```
-
-2. Install dependencies:
-   ```bash
    npm install
    ```
 
-3. Setup Environment Variables:
-   Create a `.env.local` file in the root directory and configure your essential keys:
+2. **Environment Setup**:
+   Create a `.env.local` file and add your keys:
    ```env
-   VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   VITE_CLERK_PUBLISHABLE_KEY=your_clerk_key
    VITE_SUPABASE_URL=your_supabase_url
    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
    ```
 
-4. Start the development server:
+3. **Launch**:
    ```bash
    npm run dev
    ```
 
-5. Open [http://localhost:5173](http://localhost:5173) to view the app in the browser.
+### Local Development (Docker)
+Ensure your `.env.local` is configured as shown above.
+```bash
+docker-compose up --build
+```
+The app will be accessible at [http://localhost:5173](http://localhost:5173).
 
-## Scripts
+## 🌍 Deployment
+TalentBridge is optimized for deployment on **Vercel**. 
+1. Connect your GitHub repository to Vercel.
+2. Add your `.env.local` variables to the Vercel Project Settings.
+3. Deploy!
 
-- `npm run dev` - Starts the Vite development server.
-- `npm run build` - Builds the application for production.
-- `npm run lint` - Lints the codebase utilizing ESLint.
-- `npm run preview` - Previews the production build locally.
+## 📜 Scripts
+- `npm run dev` - Start development server.
+- `npm run build` - Create production bundle.
+- `npm run lint` - Run ESLint checks.
+- `npm run preview` - Preview production build.
+
+---
