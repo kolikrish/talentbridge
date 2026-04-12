@@ -11,7 +11,7 @@ import MyJobs from "./pages/my-jobs";
 import SavedJobs from "./pages/saved-jobs";
 import JobPage from "./pages/job";
 
-import "./App.css";
+
 
 const router = createBrowserRouter([
   {

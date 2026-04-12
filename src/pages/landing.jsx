@@ -1,14 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import companies from "../data/companies.json";
-import faqs from "../data/faq.json";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Search, Users, Briefcase, TrendingUp, CheckCircle } from "lucide-react";
