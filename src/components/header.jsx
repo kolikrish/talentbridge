@@ -30,14 +30,14 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-4 flex justify-between items-center border-b border-slate-200 mb-6">
-        {/* Logo — text based, no image */}
+      <nav className="py-5 flex justify-between items-center border-b border-[var(--border)] mb-8">
+        {/* Logo — updated with TalentBridge Branding */}
         <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center shadow-md group-hover:shadow-blue-300 transition-shadow duration-300">
-            <span className="text-white font-extrabold text-sm tracking-tight">JP</span>
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2FA084] to-[#3ebd9c] flex items-center justify-center shadow-lg shadow-[#2FA084]/20 group-hover:shadow-[#2FA084]/40 transition-all duration-300">
+            <span className="text-white font-extrabold text-sm tracking-tight">TB</span>
           </div>
-          <span className="font-extrabold text-xl text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors duration-200">
-            Job<span className="text-blue-600">Portal</span>
+          <span className="font-extrabold text-2xl text-slate-900 tracking-tight group-hover:text-[#2FA084] transition-colors duration-200">
+            Talent<span className="text-[#2FA084]">Bridge</span>
           </span>
         </Link>
 
@@ -71,7 +71,7 @@ const Header = () => {
             <UserButton
               appearance={{
                 elements: {
-                  avatarBox: "w-9 h-9 ring-2 ring-blue-100",
+                  avatarBox: "w-9 h-9 ring-2 ring-[#2FA084]/20",
                 },
               }}
             >

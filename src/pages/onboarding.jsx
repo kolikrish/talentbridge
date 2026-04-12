@@ -32,7 +32,7 @@ const Onboarding = () => {
   }, [user]);
 
   if (!isLoaded) {
-    return <BarLoader className="mb-4" width={"100%"} color="#3b82f6" />;
+    return <BarLoader className="mb-4" width={"100%"} color="#2FA084" />;
   }
 
   return (
@@ -41,35 +41,35 @@ const Onboarding = () => {
         <h2 className="font-extrabold text-5xl sm:text-6xl text-slate-900 tracking-tight leading-tight mb-4">
           Choose your <span className="gradient-title">Path</span>
         </h2>
-        <p className="text-slate-500 text-lg max-w-lg mx-auto">
-          Tell us what you're looking for so we can personalize your experience.
+        <p className="text-slate-500 text-lg max-w-lg mx-auto font-medium">
+          Whether you're building your career or your team, we've got you covered.
         </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-3xl">
         <button
           onClick={() => handleRoleSelection("candidate")}
-          className="group relative flex flex-col items-center justify-center gap-6 p-8 h-64 bg-white border-2 border-slate-200 rounded-3xl hover:border-blue-500 hover:bg-blue-50 hover:shadow-xl hover:shadow-blue-100 transition-all duration-300"
+          className="group relative flex flex-col items-center justify-center gap-6 p-8 h-72 bg-white/80 backdrop-blur-sm border-2 border-slate-100 rounded-[2rem] hover:border-[#2FA084] hover:bg-[#2FA084]/5 hover:shadow-2xl hover:shadow-[#2FA084]/10 transition-all duration-500 hover:-translate-y-2"
         >
-          <div className="w-20 h-20 rounded-2xl bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300 shadow-sm">
-            <Search size={36} className="text-blue-600 group-hover:text-white transition-colors duration-300" />
+          <div className="w-24 h-24 rounded-3xl bg-[#2FA084]/10 flex items-center justify-center group-hover:bg-[#2FA084] transition-all duration-500 shadow-sm">
+            <Search size={40} className="text-[#2FA084] group-hover:text-white transition-colors duration-500" />
           </div>
           <div className="text-center">
-            <h3 className="font-bold text-2xl text-slate-900 mb-2">I am a Candidate</h3>
-            <p className="text-sm text-slate-500 font-medium">Looking for my next great role</p>
+            <h3 className="font-black text-2xl text-slate-900 mb-2">I am a Candidate</h3>
+            <p className="text-sm text-slate-500 font-bold uppercase tracking-wider">Find Your Next Big Break</p>
           </div>
         </button>
 
         <button
           onClick={() => handleRoleSelection("recruiter")}
-          className="group relative flex flex-col items-center justify-center gap-6 p-8 h-64 bg-white border-2 border-slate-200 rounded-3xl hover:border-indigo-500 hover:bg-indigo-50 hover:shadow-xl hover:shadow-indigo-100 transition-all duration-300"
+          className="group relative flex flex-col items-center justify-center gap-6 p-8 h-72 bg-slate-900 border-2 border-slate-900 rounded-[2rem] hover:bg-slate-800 hover:shadow-2xl hover:shadow-black/20 transition-all duration-500 hover:-translate-y-2"
         >
-          <div className="w-20 h-20 rounded-2xl bg-indigo-100 flex items-center justify-center group-hover:bg-indigo-600 transition-colors duration-300 shadow-sm">
-            <Briefcase size={36} className="text-indigo-600 group-hover:text-white transition-colors duration-300" />
+          <div className="w-24 h-24 rounded-3xl bg-white/10 flex items-center justify-center group-hover:bg-white transition-all duration-500 shadow-sm border border-white/10">
+            <Briefcase size={40} className="text-white group-hover:text-slate-900 transition-colors duration-500" />
           </div>
-          <div className="text-center">
-            <h3 className="font-bold text-2xl text-slate-900 mb-2">I am a Recruiter</h3>
-            <p className="text-sm text-slate-500 font-medium">Looking to hire top talent</p>
+          <div className="text-center text-white">
+            <h3 className="font-black text-2xl mb-2">I am a Recruiter</h3>
+            <p className="text-sm text-slate-400 font-bold uppercase tracking-wider">Build Your Dream Team</p>
           </div>
         </button>
       </div>
