@@ -24,29 +24,29 @@ const CreatedApplications = () => {
   }, []);
 
   if (loadingApplications) {
-    return <BarLoader className="my-8" width={"100%"} color="#3b82f6" />;
+    return <BarLoader className="my-8" width={"100%"} color="#0f172a" />;
   }
 
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full font-['Gilroy']">
       {applications?.length === 0 ? (
-        <div className="flex flex-col items-center justify-center p-12 bg-white border border-slate-200 rounded-3xl shadow-sm text-center max-w-2xl w-full mx-auto my-8">
-          <div className="w-20 h-20 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center mb-6 shadow-inner mx-auto">
-            <Search size={36} />
+        <div className="flex flex-col items-center justify-center p-20 bg-white border border-slate-50 rounded-[2.5rem] shadow-[0_10px_40px_rgba(0,0,0,0.02)] text-center max-w-2xl w-full mx-auto my-8">
+          <div className="w-20 h-20 bg-slate-50 text-slate-300 rounded-[2rem] flex items-center justify-center mb-8 mx-auto">
+            <Search size={32} />
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-3">No Applications Yet</h3>
-          <p className="text-slate-500 max-w-sm mb-8 text-base leading-relaxed">
-            You haven't applied to any jobs yet. Start exploring opportunities to find your dream role.
+          <h3 className="text-3xl font-bold text-slate-800 mb-4">No Applications.</h3>
+          <p className="text-slate-400 max-w-sm mb-10 font-normal leading-relaxed text-lg">
+            You haven't applied to any opportunities yet. Start your journey by exploring available roles.
           </p>
-          <Link 
+          <Link
             to="/jobs" 
-            className="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-bold rounded-full shadow-md text-white bg-blue-600 hover:bg-blue-700 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center px-10 py-4 text-base font-bold rounded-full shadow-lg shadow-slate-100 text-white bg-[#0f172a] hover:bg-[#1e293b] transition-all duration-300 hover:-translate-y-1"
           >
             Explore Jobs
           </Link>
         </div>
       ) : (
-        <div className="flex flex-col gap-5 w-full max-w-3xl mx-auto my-8">
+        <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto my-8">
           {applications?.map((application) => {
             return (
               <ApplicationCard

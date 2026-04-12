@@ -8,28 +8,25 @@ const MyJobs = () => {
   const { user, isLoaded } = useUser();
 
   if (!isLoaded) {
-    return <BarLoader className="my-8" width={"100%"} color="#3b82f6" />;
+    return <BarLoader className="my-8" width={"100%"} color="#0f172a" />;
   }
 
   const isCandidate = user?.unsafeMetadata?.role === "candidate";
 
   return (
-    <div className="pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-10 mt-6">
-        <div className="mx-auto w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
-          {isCandidate ? <ListTodo size={32} /> : <BriefcaseBusiness size={32} />}
-        </div>
-        <h1 className="font-extrabold text-4xl sm:text-5xl text-slate-900 tracking-tight leading-tight mb-4">
+    <div className="pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-['Gilroy']">
+      <div className="text-center mb-16 mt-10">
+        <h1 className="text-5xl md:text-6xl font-light text-slate-900 leading-none mb-6 tracking-tight">
           {isCandidate ? (
-            <>My <span className="gradient-title">Applications</span></>
+            <>My <span className="font-bold">Applications.</span></>
           ) : (
-            <>My <span className="gradient-title">Jobs</span></>
+            <>My <span className="font-bold">Positions.</span></>
           )}
         </h1>
-        <p className="text-slate-500 text-lg max-w-lg mx-auto">
+        <p className="text-slate-400 text-lg max-w-lg mx-auto font-normal leading-relaxed">
           {isCandidate 
-            ? "Track your job applications and check their latest status." 
-            : "Manage the job listings you have posted."}
+            ? "Track your current job applications and monitor their real-time progress." 
+            : "Manage and optimize the job listings you have published to the platform."}
         </p>
       </div>
 

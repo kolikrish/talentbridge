@@ -19,10 +19,10 @@ import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
 
 const statusColors = {
-  applied: "bg-blue-50 text-blue-700 border-blue-200",
-  interviewing: "bg-yellow-50 text-yellow-700 border-yellow-200",
-  hired: "bg-green-50 text-green-700 border-green-200",
-  rejected: "bg-red-50 text-red-700 border-red-200",
+  applied: "bg-slate-50 text-slate-600 border-slate-200",
+  interviewing: "bg-amber-50 text-amber-600 border-amber-100",
+  hired: "bg-emerald-50 text-emerald-600 border-emerald-100",
+  rejected: "bg-rose-50 text-rose-600 border-rose-100",
 };
 
 const ApplicationCard = ({ application, isCandidate = false }) => {
@@ -47,74 +47,81 @@ const ApplicationCard = ({ application, isCandidate = false }) => {
   const currentStatus = application.status || "applied";
 
   return (
-    <Card className="flex flex-col hover:card-shadow-hover transition-all duration-300">
-      {loadingHiringStatus && <BarLoader width={"100%"} color="#3b82f6" className="rounded-t-xl" />}
+    <Card className="flex flex-col hover:shadow-2xl hover:shadow-slate-100 transition-all duration-500 border border-slate-50 rounded-[2.5rem] bg-white shadow-[0_8px_30px_rgb(0,0,0,0.02)] font-['Gilroy'] overflow-hidden">
+      {loadingHiringStatus && <BarLoader width={"100%"} color="#0f172a" className="rounded-t-xl" />}
       
-      <CardHeader className="pb-3 px-5 pt-5">
+      <CardHeader className="p-8 pb-4">
         <CardTitle className="flex justify-between items-start gap-4">
-          <span className="font-bold text-slate-900 text-lg leading-tight">
+          <span className="font-bold text-slate-800 text-xl leading-tight">
             {isCandidate
-              ? `${application?.job?.title} at ${application?.job?.company?.name}`
+              ? application?.job?.title
               : application?.name}
           </span>
           <button
             onClick={handleDownload}
-            className="shrink-0 p-2 rounded-full bg-slate-50 border border-slate-200 text-slate-500 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-colors"
+            className="shrink-0 p-3 rounded-xl bg-slate-50 border border-slate-100/50 text-slate-400 hover:text-slate-900 hover:bg-white transition-all shadow-sm"
             title="Download Resume"
           >
-            <Download size={16} />
+            <Download size={18} />
           </button>
         </CardTitle>
+        {isCandidate && (
+          <p className="text-sm font-medium text-slate-400 -mt-2">
+            at {application?.job?.company?.name}
+          </p>
+        )}
       </CardHeader>
 
-      <CardContent className="flex flex-col gap-4 flex-1 px-5 py-2">
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2 text-slate-600 text-sm">
-            <div className="w-7 h-7 rounded-md bg-blue-50 flex items-center justify-center shrink-0">
-              <BriefcaseBusiness size={14} className="text-blue-600" />
+      <CardContent className="flex flex-col gap-6 flex-1 p-8 pt-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex items-center gap-3 text-slate-500 text-sm">
+            <div className="w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100/50">
+              <BriefcaseBusiness size={16} className="text-slate-400" />
             </div>
-            <span className="font-medium">{application?.experience} years of experience</span>
+            <span className="font-medium">{application?.experience} years exp.</span>
           </div>
           
-          <div className="flex items-center gap-2 text-slate-600 text-sm">
-            <div className="w-7 h-7 rounded-md bg-indigo-50 flex items-center justify-center shrink-0">
-              <School size={14} className="text-indigo-600" />
+          <div className="flex items-center gap-3 text-slate-500 text-sm">
+            <div className="w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100/50">
+              <School size={16} className="text-slate-400" />
             </div>
-            <span>{application?.education}</span>
+            <span className="truncate">{application?.education}</span>
           </div>
+        </div>
 
-          <div className="flex items-start gap-2 text-slate-600 text-sm">
-            <div className="w-7 h-7 rounded-md bg-purple-50 flex items-center justify-center shrink-0 mt-0.5">
-              <Boxes size={14} className="text-purple-600" />
-            </div>
-            <span className="leading-relaxed"><span className="font-medium">Skills:</span> {application?.skills}</span>
+        <div className="flex items-start gap-3 text-slate-500 text-sm">
+          <div className="w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center shrink-0 border border-slate-100/50 mt-0.5">
+            <Boxes size={16} className="text-slate-400" />
+          </div>
+          <div className="flex-1">
+            <p className="line-clamp-2 leading-relaxed"><span className="font-bold text-slate-700">Skills:</span> {application?.skills}</p>
           </div>
         </div>
       </CardContent>
 
-      <CardFooter className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-5 pb-5 pt-4 border-t border-slate-100 mt-2">
-        <span className="text-xs text-slate-400 font-medium">
-          Applied on {new Date(application?.created_at).toLocaleDateString()}
+      <CardFooter className="p-8 pt-0 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span className="text-xs text-slate-300 font-bold uppercase tracking-widest">
+          Applied {new Date(application?.created_at).toLocaleDateString()}
         </span>
         
         {isCandidate ? (
-          <span className={`capitalize font-bold text-xs px-3 py-1.5 rounded-full border ${statusColors[currentStatus] || statusColors.applied}`}>
-            Status: {currentStatus}
+          <span className={`capitalize font-bold text-[10px] tracking-[0.1em] px-4 py-2 rounded-full border uppercase ${statusColors[currentStatus] || statusColors.applied}`}>
+            {currentStatus}
           </span>
         ) : (
-          <div className="w-full sm:w-40">
+          <div className="w-full sm:w-44">
             <Select
               onValueChange={handleStatusChange}
               defaultValue={currentStatus}
             >
-              <SelectTrigger className="w-full h-8 text-xs border-slate-200 font-medium bg-slate-50 focus:bg-white focus:border-blue-500">
-                <SelectValue placeholder="Status" />
+              <SelectTrigger className="w-full h-11 text-xs border-slate-100 rounded-full font-bold bg-slate-50 focus:bg-white shadow-sm px-6">
+                <SelectValue placeholder="Update Status" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="applied">Applied</SelectItem>
-                <SelectItem value="interviewing">Interviewing</SelectItem>
-                <SelectItem value="hired">Hired</SelectItem>
-                <SelectItem value="rejected">Rejected</SelectItem>
+              <SelectContent className="rounded-2xl border-slate-100 shadow-2xl">
+                <SelectItem value="applied" className="rounded-lg">Applied</SelectItem>
+                <SelectItem value="interviewing" className="rounded-lg">Interviewing</SelectItem>
+                <SelectItem value="hired" className="rounded-lg">Hired</SelectItem>
+                <SelectItem value="rejected" className="rounded-lg">Rejected</SelectItem>
               </SelectContent>
             </Select>
           </div>
