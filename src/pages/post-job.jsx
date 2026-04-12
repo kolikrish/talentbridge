@@ -59,12 +59,15 @@ const PostJob = () => {
       ...data,
       recruiter_id: user.id,
       isOpen: true,
+      company_id: Number(data.company_id), // Ensure company_id is a number for Supabase
     });
   };
 
   useEffect(() => {
-    if (dataCreateJob?.length > 0) navigate("/jobs");
-  }, [loadingCreateJob]);
+    if (dataCreateJob && dataCreateJob.length > 0) {
+      navigate("/jobs");
+    }
+  }, [dataCreateJob]);
 
   const {
     loading: loadingCompanies,

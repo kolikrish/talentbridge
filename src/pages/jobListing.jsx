@@ -61,95 +61,100 @@ const JobListing = () => {
   const hasFilters = searchQuery || location || company_id;
 
   if (!isLoaded) {
-    return <BarLoader className="mb-4" width={"100%"} color="#3b82f6" />;
+    return <BarLoader className="mb-4" width={"100%"} color="#0f172a" />;
   }
 
   return (
-    <div className="pb-10">
+    <div className="pb-10 font-['Gilroy']">
       {/* Page Header */}
-      <div className="mb-8 text-center">
-        <h1 className="font-extrabold text-4xl sm:text-5xl text-slate-900 mb-2">
-          Browse <span className="gradient-title">Job Listings</span>
+      <div className="mb-12 text-center pt-8">
+        <h1 className="text-5xl font-light text-slate-900 leading-none mb-6 tracking-tight">
+          Browse <span className="font-bold">Listings.</span>
         </h1>
-        <p className="text-slate-500 text-base">Find the perfect role that matches your skills and ambitions.</p>
+        <p className="text-slate-400 text-base font-normal max-w-lg mx-auto leading-relaxed">
+          Find the perfect role that matches your skills and professional ambitions.
+        </p>
       </div>
 
-      {/* Search Bar */}
+      {/* Search Bar - Modernized */}
       <form
         onSubmit={handleSearch}
-        className="flex gap-2 w-full mb-4"
+        className="flex flex-col sm:flex-row gap-3 w-full max-w-4xl mx-auto mb-10"
       >
-        <div className="relative flex-1">
-          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+        <div className="relative flex-1 group">
+          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-slate-900 transition-colors" />
           <Input
             type="text"
-            placeholder="Search jobs by title, skill, keyword..."
+            placeholder="Search jobs by title, keyword..."
             name="search-query"
-            className="pl-10 h-11 text-sm"
+            className="pl-12 h-14 bg-white border-slate-100 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] focus:shadow-xl focus:shadow-slate-100 transition-all duration-300 text-base"
           />
         </div>
-        <Button type="submit" className="h-11 px-6">
+        <Button type="submit" className="h-14 px-10 rounded-2xl bg-[#0f172a] hover:bg-[#1e293b] text-white font-bold transition-all duration-300 shadow-lg shadow-slate-100 hover:shadow-xl">
           Search
         </Button>
       </form>
 
-      {/* Filters Row */}
-      <div className="flex flex-col sm:flex-row gap-2 mb-6">
-        <div className="flex items-center gap-1.5 text-slate-500 text-sm font-medium shrink-0">
-          <SlidersHorizontal size={15} />
-          Filter by:
-        </div>
-        <div className="flex flex-col sm:flex-row gap-2 flex-1">
-          <div className="flex-1">
-            <Select value={location} onValueChange={(value) => setLocation(value)}>
-              <SelectTrigger className="h-10">
-                <SelectValue placeholder="All Locations" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {State.getStatesOfCountry("IN").map(({ name }) => (
-                    <SelectItem key={name} value={name}>
-                      {name}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+      {/* Filters Row - Modernized */}
+      <div className="flex flex-col gap-6 mb-10 max-w-5xl mx-auto">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex items-center gap-2 bg-slate-50 px-4 py-2 rounded-xl text-slate-500 text-xs font-bold uppercase tracking-widest shrink-0 border border-slate-100/50">
+            <SlidersHorizontal size={14} />
+            Filters
           </div>
 
-          <div className="flex-1">
-            <Select value={company_id} onValueChange={(value) => setCompany_id(value)}>
-              <SelectTrigger className="h-10">
-                <SelectValue placeholder="All Companies" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectGroup>
-                  {companies?.map(({ name, id }) => (
-                    <SelectItem key={name} value={id}>
-                      {name}
-                    </SelectItem>
-                  ))}
-                </SelectGroup>
-              </SelectContent>
-            </Select>
-          </div>
+          <div className="flex flex-col sm:flex-row gap-3 flex-1">
+            <div className="flex-1 min-w-[180px]">
+              <Select value={location} onValueChange={(value) => setLocation(value)}>
+                <SelectTrigger className="h-12 bg-white rounded-xl border-slate-100 shadow-sm">
+                  <SelectValue placeholder="Locations" />
+                </SelectTrigger>
+                <SelectContent className="rounded-xl border-slate-100 shadow-2xl">
+                  <SelectGroup>
+                    {State.getStatesOfCountry("IN").map(({ name }) => (
+                      <SelectItem key={name} value={name} className="rounded-lg">
+                        {name}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
 
-          {hasFilters && (
-            <Button
-              variant="ghost"
-              onClick={clearFilters}
-              className="gap-1.5 text-slate-500 hover:text-red-500 hover:bg-red-50 h-10"
-            >
-              <X size={15} />
-              Clear
-            </Button>
-          )}
+            <div className="flex-1 min-w-[180px]">
+              <Select value={company_id} onValueChange={(value) => setCompany_id(value)}>
+                <SelectTrigger className="h-12 bg-white rounded-xl border-slate-100 shadow-sm">
+                  <SelectValue placeholder="Companies" />
+                </SelectTrigger>
+                <SelectContent className="rounded-xl border-slate-100 shadow-2xl">
+                  <SelectGroup>
+                    {companies?.map(({ name, id }) => (
+                      <SelectItem key={name} value={id} className="rounded-lg">
+                        {name}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {hasFilters && (
+              <Button
+                variant="ghost"
+                onClick={clearFilters}
+                className="gap-2 text-slate-400 hover:text-slate-900 h-12 px-6 rounded-xl font-bold text-xs uppercase tracking-widest transition-all"
+              >
+                <X size={15} />
+                Reset
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Loading */}
       {loadingJobs && (
-        <BarLoader className="mb-4" width={"100%"} color="#3b82f6" />
+        <BarLoader className="mb-4" width={"100%"} color="#0f172a" />
       )}
 
       {/* Results */}

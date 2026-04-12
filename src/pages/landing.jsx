@@ -133,7 +133,7 @@ const LandingPage = () => {
       </section>
 
       {/* How it Works Section - based on reference design */}
-      <section className="max-w-4xl mx-auto w-full px-4 mb-32 relative">
+      <section className="max-w-4xl mx-auto w-full px-4 mb-25 relative">
         <div className="text-center mb-20">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 mb-4">Grounded in Innovation</p>
           <h2 className="text-4xl font-light text-slate-900 mb-6 font-['Gilroy']">How TalentBridge Works</h2>
@@ -208,7 +208,7 @@ const LandingPage = () => {
         </div>
       </section>
       {/* Final CTA Section - based on reference design */}
-      <section className="py-32 text-center">
+      <section className="text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

@@ -80,10 +80,10 @@
 
 @layer utilities {
   .gradient {
-    @apply bg-gradient-to-br from-[#2FA084] via-[#3ebd9c] to-[#4ce0b9];
+    @apply bg-linear-to-br from-[#2FA084] via-[#3ebd9c] to-[#4ce0b9];
   }
   .gradient-title {
-    @apply bg-gradient-to-br from-[#2FA084] via-[#3ebd9c] to-[#4ce0b9] text-transparent bg-clip-text;
+    @apply bg-linear-to-br from-[#2FA084] via-[#3ebd9c] to-[#4ce0b9] text-transparent bg-clip-text;
   }
   .grid-background {
     background-size: 60px 60px;

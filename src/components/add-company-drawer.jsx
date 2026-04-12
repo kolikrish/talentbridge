@@ -81,7 +81,7 @@ const AddCompanyDrawer = ({ fetchCompanies }) => {
             Add a New Company
           </DrawerTitle>
         </DrawerHeader>
-        <form className="flex flex-col gap-5 p-6" onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-5 p-6">
           {/* Company Name */}
           <div className="space-y-1.5">
             <label className="text-sm font-semibold text-slate-700">Company Name</label>
@@ -129,14 +129,15 @@ const AddCompanyDrawer = ({ fetchCompanies }) => {
           {loadingAddCompany && <BarLoader width={"100%"} color="#3b82f6" />}
           
           <Button
-            type="submit"
+            type="button"
+            onClick={handleSubmit(onSubmit)}
             size="xl"
             disabled={loadingAddCompany}
             className="w-full mt-2 font-bold shadow-md shadow-blue-200 cursor-pointer"
           >
             Add Company
           </Button>
-        </form>
+        </div>
         <DrawerFooter className="border-t border-slate-100 bg-slate-50 py-4">
           <DrawerClose asChild>
             <Button id="close-company-drawer" type="button" variant="outline" className="w-full sm:w-auto mx-auto border-slate-300 text-slate-600 font-semibold bg-white">
