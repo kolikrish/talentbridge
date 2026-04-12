@@ -23,27 +23,24 @@ const SavedJobs = () => {
   }, [isLoaded]);
 
   if (!isLoaded || loadingSavedJobs) {
-    return <BarLoader className="mb-4" width={"100%"} color="#3b82f6" />;
+    return <BarLoader className="mb-4" width={"100%"} color="#0f172a" />;
   }
 
   return (
-    <div className="pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-12">
-        <div className="mx-auto w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
-          <BookmarkIcon size={32} />
-        </div>
-        <h1 className="font-extrabold text-4xl sm:text-5xl text-slate-900 tracking-tight leading-tight mb-4">
-          Saved <span className="gradient-title">Jobs</span>
+    <div className="pb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-['Gilroy']">
+      <div className="text-center mb-16 mt-10">
+        <h1 className="text-5xl md:text-6xl font-light text-slate-900 leading-none mb-6 tracking-tight">
+          Saved <span className="font-bold">Positions.</span>
         </h1>
-        <p className="text-slate-500 text-lg max-w-lg mx-auto">
-          Keep track of the opportunities that catch your eye.
+        <p className="text-slate-400 text-lg max-w-lg mx-auto font-normal leading-relaxed">
+          Revisit the opportunities that align with your career goals and future ambitions.
         </p>
       </div>
 
       {loadingSavedJobs === false && (
         <div className="mt-8">
           {savedJobs?.length ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {savedJobs?.map((saved) => (
                 <JobCard
                   key={saved.id}
@@ -54,14 +51,16 @@ const SavedJobs = () => {
               ))}
             </div>
           ) : (
-            <div className="flex flex-col items-center justify-center py-20 bg-white border border-slate-200 rounded-3xl shadow-sm text-center px-4">
-              <div className="text-6xl mb-6 opacity-80 pt-4">👀</div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-2">No Saved Jobs Yet</h3>
-              <p className="text-slate-500 max-w-sm mb-6">
-                You haven't saved any jobs yet. Browse the job listings and click the heart icon to save jobs here.
+            <div className="flex flex-col items-center justify-center py-24 bg-white border border-slate-50 rounded-[2.5rem] shadow-[0_10px_40px_rgba(0,0,0,0.07)] text-center px-6 max-w-2xl mx-auto">
+              <div className="w-20 h-20 bg-slate-50 text-slate-300 rounded-[2rem] flex items-center justify-center mb-8">
+                <BookmarkIcon size={32} />
+              </div>
+              <h3 className="text-3xl font-bold text-slate-800 mb-4">No Saved Jobs.</h3>
+              <p className="text-slate-400 max-w-sm mb-10 font-normal leading-relaxed text-lg text-center">
+                You haven't bookmarked any opportunities yet. Start exploring to build your curated list.
               </p>
-              <a href="/jobs" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200">
-                Browse Jobs
+              <a href="/jobs" className="inline-flex items-center justify-center px-10 py-4 text-base font-bold rounded-full shadow-lg shadow-slate-100 text-white bg-[#0f172a] hover:bg-[#1e293b] transition-all duration-300 hover:-translate-y-1">
+                Explore Jobs
               </a>
             </div>
           )}

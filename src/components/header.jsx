@@ -47,9 +47,14 @@ const Header = () => {
           <SignedIn>
             {user?.unsafeMetadata?.role === "recruiter" && (
               <Link to="/post-job">
-                <Button variant="default" className="rounded-lg gap-2 font-semibold">
-                  <PenBox size={16} />
-                  Post a Job
+                <Button
+                  className="h-10 px-5 rounded-full bg-[#0f172a] hover:bg-[#1e293b] text-white text-sm font-['Gilroy'] font-light flex items-center gap-2 shadow-xl shadow-slate-200 transition-all duration-300"
+                  style={{
+                    boxShadow: "0 8px 24px rgba(47, 160, 132, 0.07)",
+                  }}
+                >
+                  <PenBox size={18} className="mr-1" />
+                  Post Job
                 </Button>
               </Link>
             )}
