@@ -13,14 +13,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Search, Users, Briefcase, TrendingUp, CheckCircle } from "lucide-react";
 
-
-
 const LandingPage = () => {
   return (
     <main className="flex flex-col gap-16 pb-16">
-
       {/* Hero Section */}
-      <section className="text-center relative pt-20 pb-12">
+      <section className="text-center relative pt-20 pb-20">
         {/* Extremely Subtle Background - for pure white theme */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.01)_0%,transparent_70%)] -z-10 pointer-events-none" />
 
@@ -44,7 +41,6 @@ const LandingPage = () => {
           <br />
           <span className="text-slate-300 italic font-extralight opacity-70">for global talent.</span>
         </motion.h1>
-   
 
         <motion.p
           className="text-slate-400 mt-8 text-lg sm:text-xl font-medium max-w-xl mx-auto leading-relaxed"
@@ -83,7 +79,7 @@ const LandingPage = () => {
       </section>
 
       {/* Feature Cards Section - based on reference design */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto w-full px-4 mb-20">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto w-full px-4 mb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +95,6 @@ const LandingPage = () => {
             Our intelligent engine analyzes your skills and aspirations to find roles 
             that truly align with your career path.
           </p>
-     
         </motion.div>
 
         <motion.div
@@ -164,7 +159,7 @@ const LandingPage = () => {
             </div>
             <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex-1 w-full">
               <h3 className="text-xl font-bold text-slate-800 mb-3 font-['Gilroy']">Profile Discovery <span className="text-slate-300 font-light italic ml-2">Who are you?</span></h3>
-              <p className="text-slate-400 text-base font-normal leading-relaxed">
+              <p className="text-slate-400 text-base font-['Gilroy'] leading-relaxed">
                 Create your comprehensive profile. Our AI engine indexes your skills, 
                 experiences, and career goals to build a dynamic digital identity that stands out.
               </p>
@@ -184,7 +179,7 @@ const LandingPage = () => {
             </div>
             <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex-1 w-full">
               <h3 className="text-xl font-bold text-slate-800 mb-3 font-['Gilroy']">Intelligent Matching <span className="text-slate-300 font-light italic ml-2">Where do you fit?</span></h3>
-              <p className="text-slate-400 text-base font-normal leading-relaxed">
+              <p className="text-slate-400 text-base font-['Gilroy'] leading-relaxed">
                 Get matched with perfection. We analyze thousands of roles to surface 
                 the ones where you'll thrive, using advanced semantic search and fit scoring.
               </p>
@@ -204,13 +199,37 @@ const LandingPage = () => {
             </div>
             <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-[0_10px_40px_rgba(0,0,0,0.03)] flex-1 w-full">
               <h3 className="text-xl font-bold text-slate-800 mb-3 font-['Gilroy']">Seamless Connection <span className="text-slate-300 font-light italic ml-2">What's next?</span></h3>
-              <p className="text-slate-400 text-base font-normal leading-relaxed">
+              <p className="text-slate-400 text-base font-['Gilroy'] leading-relaxed">
                 Stay informed at every step. Track application status and 
                 receive instant feedback from hiring teams through our integrated talent pipeline.
               </p>
             </div>
           </motion.div>
         </div>
+      </section>
+      {/* Final CTA Section - based on reference design */}
+      <section className="py-32 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2 className="text-5xl md:text-7xl font-bold text-slate-900 leading-[1.1] mb-8 font-['Gilroy'] tracking-tight">
+            Hire smarter.
+            <br />
+            Grow faster.
+          </h2>
+          <p className="text-slate-400 text-lg md:text-xl font-['Gilroy'] mb-12 max-w-lg mx-auto leading-relaxed">
+            Connect with the world's best talent and companies today. 
+            Start your journey with TalentBridge.
+          </p>
+          <Link to="/onboarding">
+            <Button className="h-20 px-14 rounded-full bg-[#0f172a] hover:bg-[#1e293b] text-white text-lg font-bold transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.1)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.15)] hover:-translate-y-1">
+              Get Started Now
+            </Button>
+          </Link>
+        </motion.div>
       </section>
     </main>
   );
