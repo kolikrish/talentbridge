@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -62,7 +62,18 @@ const DrawerTrigger = ({ asChild, children, ...props }) => {
   );
 };
 
-const DrawerPortal = ({ children }) => children;
+const DrawerPortal = ({ children }) => {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  if (!mounted) return null;
+
+  return ReactDOM.createPortal(children, document.body);
+};
 
 const DrawerClose = ({ asChild, children, ...props }) => {
   const ctx = React.useContext(DrawerContext);
@@ -103,7 +114,7 @@ const DrawerContent = React.forwardRef(({ className, children, ...props }, ref) 
   if (!ctx?.isOpen) return null;
 
   return (
-    <>
+    <DrawerPortal>
       <DrawerOverlay />
       <div
         ref={ref}
@@ -111,8 +122,6 @@ const DrawerContent = React.forwardRef(({ className, children, ...props }, ref) 
         {...props}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Handle bar */}
-        <div className="mx-auto mt-3 h-1.5 w-12 rounded-full bg-slate-200 mb-2" />
         {/* Close button */}
         <button
           type="button"
@@ -123,7 +132,7 @@ const DrawerContent = React.forwardRef(({ className, children, ...props }, ref) 
         </button>
         {children}
       </div>
-    </>
+    </DrawerPortal>
   );
 });
 DrawerContent.displayName = "DrawerContent";

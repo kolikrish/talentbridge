@@ -103,3 +103,48 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #e2e8f0;
 }
+/* Drawer Styles */
+@layer components {
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    animation: fade-in 0.3s ease-out;
+  }
+
+  .drawer-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 60;
+    display: flex;
+    width: 90%;
+    max-width: 28rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    flex-direction: column;
+    border: 1px solid #e2e8f0;
+    background-color: white;
+    outline: none;
+    animation: zoom-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoom-in {
+  from { 
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
